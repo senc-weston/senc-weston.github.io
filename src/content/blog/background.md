@@ -3,7 +3,8 @@ title: "Background"
 date: 2026-09-14
 description: "What I've done so far and why"
 tags: ["Space", "Robotics"]
-draft: true
+draft: false
+
 ---
 
 This first post is meant to give some insight into myself and my work at ORBIT — a humanoid robot designed specifically for deployment in microgravity.
