@@ -1,0 +1,34 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="About" description="About Sencan — mechanical engineering, humanoid robot legs, and tendon-based actuation.">
+  <h1>About</h1>
+
+  <img class="portrait" src="/images/sencan.jpg" alt="Sencan" />
+
+  <p>Hi, I'm Sencan.</p>
+
+  <p>
+    This is my blog about my engineering journey and more. Currently my focus is
+    on my Bachelor's thesis. I'm exploring humanoid robot legs and tendon-based
+    actuation principles.
+  </p>
+
+  <p>
+    My goal with this blog is to be able to track my own work later on, when I am
+    compiling my thesis paper.
+  </p>
+
+  <p>Enjoy!</p>
+</Base>
+
+<style>
+  .portrait {
+    width: 100%;                 /* same width as the text below */
+    aspect-ratio: 3 / 2;         /* shape of the crop — 1/1 square, 16/9 wide */
+    object-fit: cover;           /* crops rather than squashing */
+    object-position: center;     /* which part survives the crop: top, center… */
+    border-radius: 0;            /* sharp corners */
+    margin: 0 0 3.4rem;          /* two blank lines of space below the photo */
+  }
+</style>

@@ -1,0 +1,19 @@
+---
+import FormattedDate from './FormattedDate.astro';
+const { posts } = Astro.props;
+---
+<ul class="post-list">
+  {posts.map((post) => (
+    <li class="post-item">
+      <a href={`/blog/${post.id}`}>
+        <h2>{post.data.title}</h2>
+        {post.data.description && <p>{post.data.description}</p>}
+        <div class="post-meta">
+          <FormattedDate date={post.data.date} />
+          {post.data.tags.length > 0 && <span>·</span>}
+          {post.data.tags.map((tag) => <span class="tag">{tag}</span>)}
+        </div>
+      </a>
+    </li>
+  ))}
+</ul>

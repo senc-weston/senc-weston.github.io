@@ -1,0 +1,23 @@
+---
+import Base from './Base.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+const { post } = Astro.props;
+const { title, description, date, tags } = post.data;
+---
+<Base title={title} description={description}>
+  <a class="back-link" href="/">&larr; All posts</a>
+  <article>
+    <header class="post-header">
+      <h1>{title}</h1>
+      {description && <p class="lede">{description}</p>}
+      <div class="post-meta">
+        <FormattedDate date={date} />
+        {tags.length > 0 && <span>·</span>}
+        <span class="tag-row">
+          {tags.map((tag) => <a class="tag" href={`/tags/${tag}`}>{tag}</a>)}
+        </span>
+      </div>
+    </header>
+    <slot />
+  </article>
+</Base>

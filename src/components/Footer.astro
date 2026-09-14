@@ -1,0 +1,11 @@
+---
+import { site, social } from '../site.config.mjs';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; {year} {site.author}</span>
+    <span class="spacer"></span>
+    {social.map((link) => <a href={link.href} rel="me noopener">{link.label}</a>)}
+  </div>
+</footer>

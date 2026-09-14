@@ -1,0 +1,64 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   THEME — every colour, font and size on the site is set here.
+   Change a value, save, and the whole site follows. Nothing else to touch.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Typography ─────────────────────────────────────────────────────────
+     To use a Google Font: uncomment the <link> in src/layouts/Base.astro
+     and put its name first in the list below.                            */
+  --font-body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Inter,
+               Helvetica, Arial, sans-serif;
+  --font-heading: var(--font-body);          /* set a different font for titles */
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --text-size: 1.0625rem;      /* body text size            */
+  --text-line: 1.7;            /* body line height          */
+  --title-weight: 650;         /* heading boldness          */
+  --title-tracking: -0.02em;   /* heading letter spacing    */
+
+  /* ── Layout ─────────────────────────────────────────────────────────── */
+  --content-width: 44rem;      /* width of the reading column   */
+  --wide-width: 60rem;         /* width of header/footer        */
+  --gutter: 1.5rem;            /* space at the screen edges     */
+  --block-gap: 1.4em;          /* space between paragraphs      */
+  --radius: 10px;              /* corner rounding               */
+
+  /* ── Light colours ──────────────────────────────────────────────────── */
+  --bg: #fdfdfc;
+  --bg-soft: #f4f4f1;          /* code blocks, cards, hover     */
+  --text: #1c1c1a;
+  --text-muted: #6b6b64;       /* dates, captions               */
+  --border: #e3e3de;
+  --accent: #1d4ed8;           /* links, highlights             */
+  --accent-soft: #dbe4fb;      /* tag chips, selection          */
+}
+
+/* ── Dark colours ─────────────────────────────────────────────────────────
+   Applied when the visitor's system is dark, or when they use the toggle. */
+:root[data-theme='dark'] {
+  --bg: #131315;
+  --bg-soft: #1e1e21;
+  --text: #e8e8e4;
+  --text-muted: #9a9a93;
+  --border: #2e2e33;
+  --accent: #86a9ff;
+  --accent-soft: #232a3d;
+}
+
+/* ── Optional presets ─────────────────────────────────────────────────────
+   Want a different look fast? Copy one of these blocks over the
+   ":root" colours above.
+
+   Warm paper:   --bg:#faf6ef; --bg-soft:#f0e9dc; --text:#2a2521;
+                 --text-muted:#7a6f60; --border:#e5dcca; --accent:#a4552b;
+                 --accent-soft:#f2e3d6;
+
+   Cool slate:   --bg:#ffffff; --bg-soft:#f1f5f9; --text:#0f172a;
+                 --text-muted:#64748b; --border:#e2e8f0; --accent:#0f766e;
+                 --accent-soft:#ccfbf1;
+
+   High contrast:--bg:#ffffff; --bg-soft:#f2f2f2; --text:#000000;
+                 --text-muted:#444444; --border:#000000; --accent:#0000cc;
+                 --accent-soft:#e0e0ff;
+*/

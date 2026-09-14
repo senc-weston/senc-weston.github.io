@@ -1,0 +1,8 @@
+---
+import { site } from '../site.config.mjs';
+const { date } = Astro.props;
+const d = new Date(date);
+---
+<time datetime={d.toISOString()}>
+  {d.toLocaleDateString(site.dateLocale, { year: 'numeric', month: 'long', day: 'numeric' })}
+</time>

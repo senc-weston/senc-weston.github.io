@@ -1,0 +1,171 @@
+/* Site styles. These read the values from theme.css — to restyle the site,
+   edit theme.css first and only come here for structural changes. */
+
+@import './theme.css';
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  background: var(--bg);
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+html[data-theme='dark'] { color-scheme: dark; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--text-size);
+  line-height: var(--text-line);
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+::selection { background: var(--accent-soft); }
+
+/* ── Containers ───────────────────────────────────────────────────────── */
+.wrap   { width: 100%; max-width: var(--wide-width);    margin-inline: auto; padding-inline: var(--gutter); }
+.column { width: 100%; max-width: var(--content-width); margin-inline: auto; padding-inline: var(--gutter); }
+
+main { flex: 1; padding-block: 3rem 5rem; }
+
+/* ── Headings & text ──────────────────────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: var(--title-weight);
+  letter-spacing: var(--title-tracking);
+  line-height: 1.25;
+  margin: 2.2em 0 0.6em;
+  text-wrap: balance;
+}
+h1 { font-size: clamp(1.9rem, 1.4rem + 2vw, 2.6rem); margin-top: 0; }
+h2 { font-size: 1.45rem; }
+h3 { font-size: 1.17rem; }
+
+p, ul, ol, blockquote, figure, table, pre { margin: 0 0 var(--block-gap); }
+ul, ol { padding-left: 1.35em; }
+li { margin-bottom: 0.35em; }
+
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { text-decoration-thickness: 2px; }
+
+small, .muted { color: var(--text-muted); font-size: 0.875rem; }
+
+hr { border: 0; border-top: 1px solid var(--border); margin: 3rem 0; }
+
+blockquote {
+  border-left: 3px solid var(--border);
+  padding: 0.2em 0 0.2em 1.1em;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+img, video { max-width: 100%; height: auto; border-radius: var(--radius); display: block; }
+figure figcaption { color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem; text-align: center; }
+
+/* ── Code ─────────────────────────────────────────────────────────────── */
+code, kbd, samp { font-family: var(--font-mono); font-size: 0.9em; }
+:not(pre) > code {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 0.1em 0.35em;
+}
+pre {
+  background: var(--bg-soft) !important;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+/* Code blocks carry a light and a dark syntax theme; this swaps to the dark
+   one. Change the themes in astro.config.mjs (markdown.shikiConfig). */
+html[data-theme='dark'] .astro-code,
+html[data-theme='dark'] .astro-code span {
+  color: var(--shiki-dark) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+/* ── Tables ───────────────────────────────────────────────────────────── */
+table { border-collapse: collapse; width: 100%; font-size: 0.94rem; }
+th, td { border-bottom: 1px solid var(--border); padding: 0.55rem 0.7rem; text-align: left; }
+th { font-weight: 650; }
+
+/* ── Header ───────────────────────────────────────────────────────────── */
+.site-header {
+  border-bottom: 1px solid var(--border);
+  padding-block: 1.1rem;
+  position: sticky;
+  top: 0;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  z-index: 10;
+}
+.site-header .wrap { display: flex; align-items: center; gap: 1.25rem; }
+.brand { font-family: var(--font-heading); font-weight: var(--title-weight); font-size: 1.05rem; color: var(--text); text-decoration: none; margin-right: auto; }
+.site-nav { display: flex; align-items: center; gap: 1.1rem; }
+.site-nav a { color: var(--text-muted); text-decoration: none; font-size: 0.93rem; }
+.site-nav a:hover, .site-nav a[aria-current='page'] { color: var(--text); }
+
+.theme-toggle {
+  background: none; border: 1px solid var(--border); color: var(--text-muted);
+  border-radius: var(--radius); width: 2rem; height: 2rem; cursor: pointer;
+  display: grid; place-items: center; padding: 0; line-height: 1;
+}
+.theme-toggle:hover { background: var(--bg-soft); color: var(--text); }
+.theme-toggle .moon { display: none; }
+html[data-theme='dark'] .theme-toggle .sun  { display: none; }
+html[data-theme='dark'] .theme-toggle .moon { display: block; }
+
+/* ── Footer ───────────────────────────────────────────────────────────── */
+.site-footer { border-top: 1px solid var(--border); padding-block: 2rem; color: var(--text-muted); font-size: 0.875rem; }
+.site-footer .wrap { display: flex; flex-wrap: wrap; gap: 0.6rem 1.1rem; align-items: center; }
+.site-footer a { color: var(--text-muted); text-decoration: none; }
+.site-footer a:hover { color: var(--accent); }
+.site-footer .spacer { margin-left: auto; }
+
+/* ── Post list ────────────────────────────────────────────────────────── */
+.intro { margin-bottom: 3rem; }
+.intro p { color: var(--text-muted); font-size: 1.05rem; max-width: 34em; }
+
+.post-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.35rem; }
+.post-item { border-bottom: 1px solid var(--border); }
+.post-item:first-child { border-top: 1px solid var(--border); }
+.post-item > a { display: block; padding: 1.15rem 0.6rem; margin-inline: -0.6rem; border-radius: var(--radius); text-decoration: none; color: inherit; }
+.post-item > a:hover { background: var(--bg-soft); }
+.post-item h2 { font-size: 1.15rem; margin: 0 0 0.3rem; }
+.post-item p { margin: 0; color: var(--text-muted); font-size: 0.94rem; }
+.post-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; color: var(--text-muted); font-size: 0.83rem; margin-top: 0.45rem; }
+
+/* ── Tags ─────────────────────────────────────────────────────────────── */
+.tag {
+  display: inline-block; background: var(--accent-soft); color: var(--accent);
+  border-radius: 999px; padding: 0.1rem 0.6rem; font-size: 0.78rem;
+  text-decoration: none; line-height: 1.6;
+}
+.tag:hover { filter: brightness(0.95); }
+.tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+/* ── Article ──────────────────────────────────────────────────────────── */
+.post-header { margin-bottom: 2.5rem; }
+.post-header h1 { margin-bottom: 0.6rem; }
+.post-header .lede { color: var(--text-muted); font-size: 1.08rem; margin-bottom: 0.9rem; }
+.back-link { display: inline-block; margin-bottom: 2.5rem; font-size: 0.9rem; text-decoration: none; color: var(--text-muted); }
+.back-link:hover { color: var(--accent); }
+
+/* Maths blocks scroll instead of overflowing on phones */
+.katex-display { overflow-x: auto; overflow-y: hidden; padding-block: 0.25rem; }
+
+@media (max-width: 520px) {
+  .site-nav { gap: 0.8rem; }
+  main { padding-block: 2rem 3.5rem; }
+}
