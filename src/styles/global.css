@@ -189,8 +189,12 @@ body::after {
   background: rgb(8 8 10 / var(--backdrop-dim));
   backdrop-filter: blur(var(--backdrop-blur));
 }
-/* Article pages get their own photo. */
-body[data-page='post']::before { background-image: var(--backdrop-image-post); }
+/* The About page gets its own photo and a lighter veil. */
+body[data-page='about']::before { background-image: var(--backdrop-image-about); }
+body[data-page='about']::after {
+  background: rgb(8 8 10 / var(--backdrop-dim-about));
+  backdrop-filter: blur(var(--backdrop-blur-about));
+}
 
 body { background: transparent; }
 

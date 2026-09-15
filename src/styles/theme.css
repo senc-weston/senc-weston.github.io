@@ -24,15 +24,18 @@
   --block-gap: 1.4em;          /* space between paragraphs      */
   --radius: 10px;              /* corner rounding               */
 
-  /* ── Background photo ───────────────────────────────────────────────
-     The photo behind the whole site. Drop your file in public/images/
-     and change the name below. --backdrop-dim is how dark the veil over
-     it is: higher = darker = easier to read. --card-fade below 1 lets the
-     photo show faintly through the text panel.                          */
+  /* ── Background photos ──────────────────────────────────────────────
+     backdrop.jpg sits behind the whole site. The About page gets its own
+     photo and its own, lighter veil. --backdrop-dim is how dark the veil
+     is: higher = darker = easier to read over a busy photo.            */
   --backdrop-image: url('/images/backdrop.jpg');
-  --backdrop-image-post: url('/images/backdrop-post.jpg');
   --backdrop-dim: 0.62;
   --backdrop-blur: 2px;
+
+  --backdrop-image-about: url('/images/backdrop-about.jpg');
+  --backdrop-dim-about: 0.22;
+  --backdrop-blur-about: 0px;
+
   --card-fade: 1;
 
   /* ── Light colours ──────────────────────────────────────────────────── */
