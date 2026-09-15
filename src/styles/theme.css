@@ -24,6 +24,16 @@
   --block-gap: 1.4em;          /* space between paragraphs      */
   --radius: 10px;              /* corner rounding               */
 
+  /* ── Background photo ───────────────────────────────────────────────
+     The photo behind the whole site. Drop your file in public/images/
+     and change the name below. --backdrop-dim is how dark the veil over
+     it is: higher = darker = easier to read. --card-fade below 1 lets the
+     photo show faintly through the text panel.                          */
+  --backdrop-image: url('/images/backdrop.jpg');
+  --backdrop-dim: 0.62;
+  --backdrop-blur: 2px;
+  --card-fade: 1;
+
   /* ── Light colours ──────────────────────────────────────────────────── */
   --bg: #fdfdfc;
   --bg-soft: #f4f4f1;          /* code blocks, cards, hover     */

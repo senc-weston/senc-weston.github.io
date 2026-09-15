@@ -169,3 +169,57 @@ html[data-theme='dark'] .theme-toggle .moon { display: block; }
   .site-nav { gap: 0.8rem; }
   main { padding-block: 2rem 3.5rem; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   BACKGROUND PHOTO
+   The photo sits behind every page; the content rides on a panel above it.
+   To change the photo, the darkness of the veil, or how solid the panel is,
+   edit the four --backdrop-* / --card-fade values in theme.css. Nothing here
+   needs touching.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: -2;
+  background: var(--backdrop-image) center / cover no-repeat;
+}
+body::after {
+  content: '';
+  position: fixed; inset: 0; z-index: -1;
+  background: rgb(8 8 10 / var(--backdrop-dim));
+  backdrop-filter: blur(var(--backdrop-blur));
+}
+body { background: transparent; }
+
+/* Header and footer become translucent bars over the photo. */
+.site-header {
+  background: rgb(8 8 10 / 0.55);
+  border-bottom-color: rgb(255 255 255 / 0.12);
+}
+.brand { color: #fff; }
+.site-nav a { color: rgb(255 255 255 / 0.72); }
+.site-nav a:hover, .site-nav a[aria-current='page'] { color: #fff; }
+.theme-toggle { color: rgb(255 255 255 / 0.72); border-color: rgb(255 255 255 / 0.22); }
+.theme-toggle:hover { background: rgb(255 255 255 / 0.1); color: #fff; }
+
+.site-footer {
+  background: rgb(8 8 10 / 0.55);
+  border-top-color: rgb(255 255 255 / 0.12);
+  color: rgb(255 255 255 / 0.7);
+}
+.site-footer a { color: rgb(255 255 255 / 0.7); }
+.site-footer a:hover { color: #fff; }
+
+/* The reading panel. */
+main { padding-block: 3rem 5rem; }
+main > .column, main > .wrap {
+  background: color-mix(in srgb, var(--bg) calc(var(--card-fade) * 100%), transparent);
+  border-radius: var(--radius);
+  padding-block: 3rem;
+  box-shadow: 0 12px 44px rgb(0 0 0 / 0.38);
+}
+
+@media (max-width: 520px) {
+  main { padding-block: 1.5rem 3rem; }
+  main > .column, main > .wrap { padding-block: 2rem; border-radius: 0; }
+}
