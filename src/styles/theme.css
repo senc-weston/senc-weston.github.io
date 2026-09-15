@@ -30,6 +30,7 @@
      it is: higher = darker = easier to read. --card-fade below 1 lets the
      photo show faintly through the text panel.                          */
   --backdrop-image: url('/images/backdrop.jpg');
+  --backdrop-image-post: url('/images/backdrop-post.jpg');
   --backdrop-dim: 0.62;
   --backdrop-blur: 2px;
   --card-fade: 1;

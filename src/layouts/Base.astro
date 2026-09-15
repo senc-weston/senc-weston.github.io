@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 import 'katex/dist/katex.min.css';
 
-const { title, description = site.description, wide = false } = Astro.props;
+const { title, description = site.description, wide = false, page = 'default' } = Astro.props;
 const pageTitle = title ? `${title} · ${site.title}` : `${site.title} · ${site.tagline}`;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url);
 ---
@@ -42,7 +42,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url);
       })();
     </script>
   </head>
-  <body>
+  <body data-page={page}>
     <Header />
     <main>
       <div class={wide ? 'wrap' : 'column'}>

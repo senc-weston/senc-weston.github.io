@@ -189,6 +189,9 @@ body::after {
   background: rgb(8 8 10 / var(--backdrop-dim));
   backdrop-filter: blur(var(--backdrop-blur));
 }
+/* Article pages get their own photo. */
+body[data-page='post']::before { background-image: var(--backdrop-image-post); }
+
 body { background: transparent; }
 
 /* Header and footer become translucent bars over the photo. */
