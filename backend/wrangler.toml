@@ -1,0 +1,13 @@
+name = "blog-updates"
+main = "worker.js"
+compatibility_date = "2026-09-17"
+account_id = "1613ee30b836d4484822bc67a61fa9bd"
+workers_dev = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "blog-subscribers"
+database_id = "bfec8caf-b89a-42dd-a73f-569a8bc91cd2"
+
+[triggers]
+crons = ["*/10 * * * *"]

@@ -166,6 +166,8 @@ html[data-theme='dark'] .theme-toggle .moon { display: block; }
 .katex-display { overflow-x: auto; overflow-y: hidden; padding-block: 0.25rem; }
 
 @media (max-width: 520px) {
+  .site-header .wrap { flex-wrap: wrap; gap: 0.7rem; }
+  .site-nav { flex-wrap: wrap; }
   .site-nav { gap: 0.8rem; }
   main { padding-block: 2rem 3.5rem; }
 }

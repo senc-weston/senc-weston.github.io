@@ -20,4 +20,14 @@ const { title, description, date, tags } = post.data;
     </header>
     <slot />
   </article>
+  <aside class="post-updates">
+    <h2>Follow the next steps</h2>
+    <p><a href="/updates">Get updates</a> when I publish a new post.</p>
+  </aside>
 </Base>
+
+<style>
+  .post-updates { border-top: 1px solid var(--border); margin-top: 3rem; padding-top: 1.5rem; }
+  .post-updates h2 { margin-top: 0; font-size: 1.15rem; }
+  .post-updates p { margin-bottom: 0; }
+</style>

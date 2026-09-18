@@ -5,7 +5,7 @@
 export const site = {
   // Your live address. Change this when your domain is ready.
   // No trailing slash. Used for RSS, sitemap and social previews.
-  url: 'https://example.com',
+  url: 'https://sencan.ch',
 
   title: "Sencan's RoboBlog",
   tagline: 'Robots and adjacent things of a similar nature',
@@ -25,6 +25,7 @@ export const site = {
 export const nav = [
   { label: 'Posts', href: '/' },
   { label: 'About', href: '/about' },
+  { label: 'Get updates', href: '/updates' },
 ];
 
 // Links in the footer. Delete any you don't want.

@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Public HTTPS endpoint only. Email provider keys belong on the backend.
+const endpoint = import.meta.env.PUBLIC_SUBSCRIBE_URL;
+if (endpoint && new URL(endpoint).protocol !== 'https:') {
+  throw new Error('PUBLIC_SUBSCRIBE_URL must use HTTPS.');
+}
+---
+<Base title="Get updates" description="Get an email when I publish a new post about robotics and engineering.">
+  <h1>Get updates</h1>
+  <p class="lede">Follow along with my robotics and engineering projects. Get an email whenever I publish a new post.</p>
+  {endpoint ? (
+    <form method="post" action={endpoint} class="subscribe-form">
+      <label for="subscriber-email">Your email address</label>
+      <div class="subscribe-fields">
+        <input id="subscriber-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required maxlength="254" aria-describedby="subscribe-note" />
+        <button type="submit">Get updates</button>
+      </div>
+      <p id="subscribe-note" class="muted">By subscribing, you agree to receive new post notifications. Check your inbox to confirm your subscription. Unsubscribe anytime using the link in each email.</p>
+    </form>
+  ) : (
+    <p>Email signup is coming soon. In the meantime, you can follow the blog with <a href="/rss.xml">RSS</a>.</p>
+  )}
+</Base>
+
+<style>
+  .lede { color: var(--text-muted); max-width: 36em; }
+  .subscribe-form { margin-top: 2rem; }
+  label { display: block; font-weight: 650; margin-bottom: 0.5rem; }
+  .subscribe-fields { display: flex; gap: 0.75rem; margin-bottom: 0.8rem; }
+  input, button { font: inherit; border-radius: var(--radius); padding: 0.7rem 1rem; }
+  input { min-width: 0; flex: 1; color: var(--text); background: var(--bg); border: 1px solid var(--border); }
+  button { color: var(--bg); background: var(--accent); border: 1px solid var(--accent); cursor: pointer; font-weight: 650; }
+  input:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  button:hover { filter: brightness(0.9); }
+  @media (max-width: 520px) { .subscribe-fields { flex-direction: column; } }
+</style>
