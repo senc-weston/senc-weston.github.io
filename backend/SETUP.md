@@ -1,7 +1,8 @@
 # Mailing list setup
 
-Status: setup in progress. The website form remains inactive until the backend
-is deployed and signup, confirmation, unsubscribe, and delivery checks pass.
+Status: Worker deployed and the website form enabled. A live test signup was
+sent to the owner's address on September 18, 2026; confirmation and sample
+delivery still need to be checked.
 
 ## Cloudflare resources
 
@@ -10,8 +11,7 @@ is deployed and signup, confirmation, unsubscribe, and delivery checks pass.
 - Database ID: `bfec8caf-b89a-42dd-a73f-569a8bc91cd2`
 - Jurisdiction: EU
 - Database created September 17, 2026; tables deployed.
-- Worker `blog-updates` created with the default Hello World template. The local
-  `worker.js` has not yet been deployed.
+- Worker `blog-updates` deployed from `worker.js` with a ten-minute cron.
 - Worker URL: `https://blog-updates.sencan-weston.workers.dev`
 - D1 database is bound to the Worker as `DB`.
 - `RESEND_API_KEY` has been added as a Worker secret.
@@ -26,10 +26,11 @@ is deployed and signup, confirmation, unsubscribe, and delivery checks pass.
 
 ## Remaining implementation
 
-Deploy `worker.js` with `wrangler deploy` from this folder; the cron schedule is
-defined in `wrangler.toml`. Publish the website's `/updates.json` before the
-first scheduled run so existing posts are recorded as the baseline. Test signup,
-confirmation, unsubscribe, and a sample new-post delivery. Only then set the
-website's `PUBLIC_SUBSCRIBE_URL` to the Worker `/subscribe` endpoint.
+The website's `/updates.json` is published and the existing `background` post
+was recorded in `seen_posts` as the baseline. The GitHub Pages workflow sets
+`PUBLIC_SUBSCRIBE_URL` to the Worker `/subscribe` endpoint. Confirm the test
+signup, send one sample notification, then unsubscribe and remove the test
+subscriber and its delivery rows. The Worker only sends a post to addresses
+that confirmed before it was first seen.
 
 GitHub Pages continues to host the website. No nameserver change is required.
