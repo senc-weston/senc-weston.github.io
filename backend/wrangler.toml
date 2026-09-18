@@ -4,6 +4,9 @@ compatibility_date = "2026-09-17"
 account_id = "1613ee30b836d4484822bc67a61fa9bd"
 workers_dev = true
 
+[secrets]
+required = ["RESEND_API_KEY"]
+
 [[d1_databases]]
 binding = "DB"
 database_name = "blog-subscribers"
